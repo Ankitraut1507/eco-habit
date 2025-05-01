@@ -20,8 +20,6 @@ async function setupMongoDB() {
     
     // Connect with Atlas-specific options
     await mongoose.connect(uri, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
       retryWrites: true,
       w: 'majority'
     });

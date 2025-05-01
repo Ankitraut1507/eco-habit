@@ -91,8 +91,6 @@ async function setupMongoDB() {
       
       // Connect to MongoDB with Atlas-specific options
       await mongoose.connect(uri, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
         serverSelectionTimeoutMS: 5000, // Timeout after 5s instead of 30s
         // Options specific for MongoDB Atlas
         retryWrites: true,
@@ -105,13 +103,14 @@ async function setupMongoDB() {
       currentRetry++;
       console.error(`MongoDB Connection Error (Attempt ${currentRetry}/${maxRetries}):`, err.message);
       
-      if (currentRetry === maxRetries) {
+      // If we've exhausted all retries, exit
+      if (currentRetry >= maxRetries) {
         console.error('Failed to connect to MongoDB after multiple attempts');
         process.exit(1);
       }
       
-      // Wait for 2 seconds before retrying
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      // Wait before retrying
+      await new Promise(resolve => setTimeout(resolve, 3000));
     }
   }
 }

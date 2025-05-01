@@ -24,8 +24,6 @@ const createTestNGO = async () => {
   try {
     // Connect to MongoDB Atlas
     await mongoose.connect(process.env.MONGODB_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
       retryWrites: true,
       w: 'majority'
     });
