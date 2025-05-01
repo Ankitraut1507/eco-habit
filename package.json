@@ -1,0 +1,41 @@
+{
+  "name": "ecohabit-backend",
+  "version": "1.0.0",
+  "description": "Backend server for EcoHabit application",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "set NODE_ENV=development && nodemon server.js",
+    "prod": "set NODE_ENV=production && node server.js",
+    "create-admin": "set NODE_ENV=development && node createAdmin.js",
+    "create-ngo": "set NODE_ENV=development && node createSampleNGO.js",
+    "create-test-ngo": "set NODE_ENV=development && node createTestNGO.js",
+    "get-ip": "node getLocalIp.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "network-check": "node networkDiagnostic.js"
+  },
+  "keywords": [
+    "ecohabit",
+    "mongodb",
+    "express",
+    "node",
+    "api"
+  ],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.2.3",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.2"
+  },
+  "devDependencies": {
+    "mongodb-memory-server": "^9.1.6",
+    "nodemon": "^3.1.0"
+  }
+}
